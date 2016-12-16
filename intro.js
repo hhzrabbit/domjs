@@ -42,13 +42,11 @@ var addItem = function(text) {
     list.appendChild(newitem);
 };
 
-
 //remove specified item from list
 var removeItem = function(n) {
     var listitems = document.getElementsByTagName('li');
     listitems[n].remove();
 };
-
 
 var red = function() {
     var items = document.getElementsByTagName("li");
@@ -61,6 +59,7 @@ var buttonCallback = function(e){
     console.log(this);
     addItem("w0w");
     var listitems = document.getElementsByTagName('li');
+    console.log(listitems);
     newestItem = listitems[listitems.length - 1];
     newestItem.addEventListener('mouseover', hoverCallback);
     newestItem.addEventListener('mouseout', unhoverCallback)
@@ -91,6 +90,12 @@ var fib = function(n){
     return result;
 };
 
+var fbuttonCallback = function(e){
+    var listitems = document.getElementsByClassName('fib');
+    var n = listitems.length;
+    addItemToFib(fib(n));
+};
+
 //instantiate an object
 var o = { 'name' : 'Thluffy',
 	  age : 15,
@@ -103,6 +108,9 @@ var o = { 'name' : 'Thluffy',
 
 var b = document.getElementById('b');
 b.addEventListener('click', buttonCallback);
+
+var f = document.getElementById('f');
+f.addEventListener('click', fbuttonCallback);
 
 var items = document.getElementsByTagName("li");
 for(var i = 0; i < items.length; i++) {
