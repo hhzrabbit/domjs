@@ -71,25 +71,17 @@ var hoverCallback = function(e){
   //  console.log(this);
     var newtext = this.innerHTML;
     header.innerHTML = newtext;
-};
+}
 
 var unhoverCallback = function(e){
   //  console.log(this);
     header.innerHTML = headerText;
-};
-    
- var clickCallback = function(e){
-     console.log(this);
-     this.parentNode.removeChild(this)
- };
+}
 
-     
-var fib = function(n){ 
-    var result = 0;
-    if (n<=1) return n;
-    result = fib(n-1) + fib(n-2);
-    return result;
-};
+var clickCallback = function(e){
+    console.log(this);
+    this.parentNode.removeChild(this)
+}
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
@@ -113,5 +105,3 @@ for(var i = 0; i < items.length; i++) {
 
 var header = document.getElementById("h");
 var headerText = header.innerHTML;
-
-
