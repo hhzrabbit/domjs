@@ -79,6 +79,7 @@ var unhoverCallback = function(e){
 
 var clickCallback = function(e){
     console.log(this);
+    this.parentNode.removeChild(this)
 }
 
 //instantiate an object
@@ -100,6 +101,7 @@ var items = document.getElementsByTagName("li");
 for(var i = 0; i < items.length; i++) {
     items[i].addEventListener('mouseover', hoverCallback);
     items[i].addEventListener('mouseout', unhoverCallback);
+    items[i].addEventListener('click', clickCallback);
 }
 
 var header = document.getElementById("h");
