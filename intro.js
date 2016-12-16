@@ -63,7 +63,8 @@ var buttonCallback = function(e){
     var listitems = document.getElementsByTagName('li');
     newestItem = listitems[listitems.length - 1];
     newestItem.addEventListener('mouseover', hoverCallback);
-    newestItem.addEventListener('mouseout', unhoverCallback);
+    newestItem.addEventListener('mouseout', unhoverCallback)
+    newestItem.addEventListener('click',  clickCallback);;
 };
 
 var hoverCallback = function(e){
@@ -94,8 +95,6 @@ var o = { 'name' : 'Thluffy',
 
 var b = document.getElementById('b');
 b.addEventListener('click', buttonCallback);
-
-
 
 var items = document.getElementsByTagName("li");
 for(var i = 0; i < items.length; i++) {
