@@ -57,6 +57,29 @@ var red = function() {
     }
 };
 
+var buttonCallback = function(e){
+    console.log(this);
+    addItem("w0w");
+    var listitems = document.getElementsByTagName('li');
+    newestItem = listitems[listitems.length - 1];
+    newestItem.addEventListener('mouseover', hoverCallback);
+    newestItem.addEventListener('mouseout', unhoverCallback);
+};
+
+var hoverCallback = function(e){
+  //  console.log(this);
+    var newtext = this.innerHTML;
+    header.innerHTML = newtext;
+}
+
+var unhoverCallback = function(e){
+  //  console.log(this);
+    header.innerHTML = headerText;
+}
+
+var clickCallback = function(e){
+    console.log(this);
+}
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
@@ -67,3 +90,17 @@ var o = { 'name' : 'Thluffy',
 	      return x+30;
 	  }
 	};
+
+var b = document.getElementById('b');
+b.addEventListener('click', buttonCallback);
+
+
+
+var items = document.getElementsByTagName("li");
+for(var i = 0; i < items.length; i++) {
+    items[i].addEventListener('mouseover', hoverCallback);
+    items[i].addEventListener('mouseout', unhoverCallback);
+}
+
+var header = document.getElementById("h");
+var headerText = header.innerHTML;
