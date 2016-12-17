@@ -35,10 +35,12 @@ var factR = function(n) {
 
 
 //add list item 
-var addItem = function(text) {
-    var list = document.getElementById("thelist");
+var addItem = function(text,id) {
+    var list = document.getElementById(id);
     var newitem = document.createElement("li");
     newitem.innerHTML = text;
+    console.log("list: "+ list );
+    console.log("new item: "+newitem);
     list.appendChild(newitem);
 };
 
@@ -48,6 +50,7 @@ var removeItem = function(n) {
     listitems[n].remove();
 };
 
+//turn list items red
 var red = function() {
     var items = document.getElementsByTagName("li");
     for(var i = 0; i < items.length; i++) {
@@ -55,34 +58,26 @@ var red = function() {
     }
 };
 
-var buttonCallback = function(e){
-    console.log(this);
-    addItem("w0w");
-    var listitems = document.getElementsByTagName('li');
-    console.log(listitems);
-    newestItem = listitems[listitems.length - 1];
-    newestItem.addEventListener('mouseover', hoverCallback);
-    newestItem.addEventListener('mouseout', unhoverCallback)
-    newestItem.addEventListener('click',  clickCallback);;
-};
-
+//turn header into text
 var hoverCallback = function(e){
   //  console.log(this);
     var newtext = this.innerHTML;
     header.innerHTML = newtext;
 };
 
+//return header to orginal text
 var unhoverCallback = function(e){
   //  console.log(this);
     header.innerHTML = headerText;
 };
-    
- var clickCallback = function(e){
-     console.log(this);
-     this.parentNode.removeChild(this)
- };
+  
+//remove child node  
+var clickCallback = function(e){
+    console.log(this);
+    this.parentNode.removeChild(this)
+};
 
-     
+//return nth fib num 
 var fib = function(n){ 
     var result = 0;
     if (n<=1) return n;
@@ -90,11 +85,21 @@ var fib = function(n){
     return result;
 };
 
-var fbuttonCallback = function(e){
-    var listitems = document.getElementsByClassName('fib');
-    var n = listitems.length;
-    addItemToFib(fib(n));
+//add listitem 
+var buttonCallback = function(text,id){
+    console.log(text);
+    addItem(text,id);
+    var listitems = document.getElementsByTagName('li');
+    console.log(listitems);
+
+    if (text == "thelist"){
+	newestItem = listitems[listitems.length - 1];
+	newestItem.addEventListener('mouseover', hoverCallback);
+	newestItem.addEventListener('mouseout', unhoverCallback);
+	newestItem.addEventListener('click',  clickCallback);
+    }
 };
+
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
@@ -102,15 +107,27 @@ var o = { 'name' : 'Thluffy',
 	  items : [10, 20, 30, 40],
 	  morestuff : {a : 1, b : 'ayo'},
 	  func : function(x) {
-	      return x+30;
-	  }
-	};
+	return x+30;
+    }
+};
 
+//anonymous functions
+var nButton = function(){
+    buttonCallback("wow","thelist");
+};
+
+var fButton = function(){
+    var list = document.getElementById("fiblist");
+    var listItems = list.getElementsByTagName("li");
+    buttonCallback(fib(listItems.length+1),"fiblist");
+};
+
+//calls
 var b = document.getElementById('b');
-b.addEventListener('click', buttonCallback);
+b.addEventListener('click', nButton);
 
 var f = document.getElementById('f');
-f.addEventListener('click', fbuttonCallback);
+f.addEventListener('click', fButton);
 
 var items = document.getElementsByTagName("li");
 for(var i = 0; i < items.length; i++) {
