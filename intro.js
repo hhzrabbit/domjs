@@ -85,6 +85,27 @@ var fib = function(n){
     return result;
 };
 
+//return nth tribonacci num 
+var tri = function(n){ 
+    var result = 0;
+    if (n<=1) return n;
+    if (n==2) return 1;
+    result = tri(n-1) + tri(n-2) + tri(n-3);
+    return result;
+};
+
+
+//return nth lucas num 
+var luc = function(n){ 
+    var result = 0;
+    if (n==0) return 2;
+    if (n==1) return 1;
+    result = luc(n-1) + luc(n-2);
+    return result;
+};
+
+
+
 //add listitem 
 var buttonCallback = function(text,id){
     console.log(text);
@@ -113,21 +134,51 @@ var o = { 'name' : 'Thluffy',
 
 //anonymous functions
 var nButton = function(){
-    buttonCallback("wow","thelist");
+    buttonCallback("Geraldine","thelist");
 };
 
-var fButton = function(){
-    var list = document.getElementById("fiblist");
+var fibonacciButton = function(){
+    var list = document.getElementById("fibList");
     var listItems = list.getElementsByTagName("li");
-    buttonCallback(fib(listItems.length+1),"fiblist");
+    buttonCallback(fib(listItems.length+1),"fibList");
 };
+
+var naturalButton = function(){
+    var list = document.getElementById("natural");
+    var listItems = list.getElementsByTagName("li");
+    buttonCallback(listItems.length+1,"natural");
+};
+
+var lucasButton = function(){
+    var list = document.getElementById("lucasList");
+    var listItems = list.getElementsByTagName("li");
+    buttonCallback(luc(listItems.length+1),"lucasList");
+};
+
+var tribonacciButton = function(){
+    var list = document.getElementById("tribonacciList");
+    var listItems = list.getElementsByTagName("li");
+    buttonCallback(tri(listItems.length+1),"tribonacciList");
+};
+
+
+
 
 //calls
 var b = document.getElementById('b');
 b.addEventListener('click', nButton);
 
-var f = document.getElementById('f');
-f.addEventListener('click', fButton);
+var f = document.getElementById('fibonacciButton');
+f.addEventListener('click', fibonacciButton);
+
+var natural = document.getElementById('naturalButton');
+natural.addEventListener('click', naturalButton);
+
+var lucas = document.getElementById('lucasButton');
+lucas.addEventListener('click', lucasButton);
+
+var tribonacci = document.getElementById('tribonacciButton');
+tribonacci.addEventListener('click', tribonacciButton);
 
 var items = document.getElementsByTagName("li");
 for(var i = 0; i < items.length; i++) {
